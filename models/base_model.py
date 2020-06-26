@@ -2,17 +2,16 @@
 """Module for Base classfor the AirBnB clone console."""
 
 import uuid
-import datetime
-
+from datetime import datetime
 class BaseModel:
     """Class for base model"""
     
     def __init__(self, *args, **kwargs):
-        """init"""
-        if kwargs is not None and args is not None:
-            for i in kwargs:
-                if "created_at" in i:
-                    
+        """init"""  
         self.id = str(uuid.uuid4())
-    
-    
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+
+    def __str__(self):
+        return ("{}{}{}".format(type(self).__name__,self.id,self.__dict__))
