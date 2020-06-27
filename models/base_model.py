@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Module for Base classfor the AirBnB clone console."""
+"""Module for Base class for the AirBnB clone console."""
 
 import uuid
 from datetime import datetime
 
 
 class BaseModel:
-    """Class for base model"""
+    """Class for Base Model"""
 
     def __init__(self, *args, **kwargs):
         """init"""
