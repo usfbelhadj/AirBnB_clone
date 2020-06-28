@@ -13,23 +13,20 @@ class FileStorage:
         FileStorage.__objects[type(obj).__name__ +"."+obj.id] = obj
     def save(self):
         '''save: to json'''
-        dct = {}
+        _dict = {}
         with open(FileStorage.__file_path, "w", encoding='utf-8') as f:
-            for k, v in FileStorage.__objects.items():
-                dct[k] = v.to_dict()
-            return json.dumps(dct, f)
+            for key, val in FileStorage.__objects.items():
+                _dict[key] = val.to_dict()
+            json.dump(_dict, f)
     
     def reload(self):
         from models.base_model import BaseModel
         if path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
-                try:
-                    obj = json.load(f)
-                except:
-                    return
-                dct = {}
-                for key in obj.keys():
-                    dct[key] = BaseModel(**obj.get(key))
-                FileStorage.__objects = dct
+                obj = json.load(f)
+                _dict = {}
+                for key, val in obj.items():
+                    _dict[key] = BaseModel(**val)
+                FileStorage.__objects = _dict
         else:
             return
