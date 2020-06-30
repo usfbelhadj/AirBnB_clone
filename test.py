@@ -1,4 +1,6 @@
 import json
+from models import storage
+
 """with open("file.json", "r", encoding="utf-8") as f:
     obj = json.load(f)
     for i, v in obj.items():
@@ -7,5 +9,8 @@ import json
                 print(y)"""
 
 
+for i, v in storage.all().items():
+    if 'eazrea' in i:
+        print('ok')
+    print(i)
 
-print('azerazer azerazer azer'.split(' ')[0])
