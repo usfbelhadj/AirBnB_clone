@@ -70,6 +70,21 @@ class HBNBCommand(cmd.Cmd):
         pass
             
 
+    def do_all(self, arg):
+        t = []
+        if arg == '':
+            for k, v in storage.all().items():
+                t.append(str(v))
+        elif arg == 'BaseModel':
+            for k, v in storage.all().items():
+                if arg in k:
+                    t.append(str(v))
+        print(t)
+
+
+
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
