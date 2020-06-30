@@ -60,9 +60,15 @@ class HBNBCommand(cmd.Cmd):
                 print('** instance id missing **')
                 return
             for i, v in storage.all().items():
-                if args[1] in i:
+                i = i.split('.')
+                if args[1] == i[1]:
                     print(v)
-
+                    return
+            print("** no instance found **")
+            
+    def do_destroy(self, arg):
+        pass
+            
 
 
 if __name__ == '__main__':
