@@ -79,6 +79,9 @@ class HBNBCommand(cmd.Cmd):
             for k, v in storage.all().items():
                 if arg in k:
                     t.append(str(v))
+        else:
+            print("** class doesn't exist **")
+            return
         print(t)
 
 

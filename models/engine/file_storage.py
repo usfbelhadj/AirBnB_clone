@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module for FileStorage class for the AirBnB clone console."""
 import json
-from os import path
+from os import path, stat
 class FileStorage:
     """Class for file Storage"""
     __file_path = "file.json"
@@ -21,7 +21,7 @@ class FileStorage:
     
     def reload(self):
         from models.base_model import BaseModel
-        if path.isfile(FileStorage.__file_path):
+        if path.isfile(FileStorage.__file_path) and not stat(FileStorage.__file_path).st_size == 0:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 obj = json.load(f)
                 _dict = {}
