@@ -31,8 +31,9 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """empty line"""
         pass
-        
+
     def check_class(self, class_name):
+        """Check Classes"""
         if class_name == '':
             print('** class name missing **')
             return False
@@ -41,16 +42,15 @@ class HBNBCommand(cmd.Cmd):
             return False
         return True
 
-
     def do_create(self, arg):
+        """Create"""
         if self.check_class(arg):
             new_model = BaseModel()
             new_model.save()
             print(new_model.id)
 
-
-
     def do_show(self, arg):
+        """Show"""
         args = arg.split(' ')
         if self.check_class(args[0]):
             if len(args) < 2:
@@ -65,8 +65,9 @@ class HBNBCommand(cmd.Cmd):
                     print(v)
                     return
             print("** no instance found **")
-            
+
     def do_destroy(self, arg):
+        """Destroy"""
         args = arg.split(' ')
         if self.check_class(args[0]):
             if len(args) < 2:
@@ -81,9 +82,9 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del storage.all()[dic]
                 storage.save()
-            
 
     def do_all(self, arg):
+        """Show All"""
         t = []
         if arg == '':
             for k, v in storage.all().items():
@@ -96,10 +97,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(t)
-
-
-
-
 
 
 if __name__ == '__main__':
