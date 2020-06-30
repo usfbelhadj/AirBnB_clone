@@ -5,6 +5,9 @@
 import cmd
 import json
 from models.base_model import BaseModel
+from models import storage
+from datetime import datetime
+
 
 class HBNBCommand(cmd.Cmd):
     """command interpreter"""
@@ -50,20 +53,16 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         args = arg.split(' ')
         if self.check_class(args[0]):
+            if len(args) < 2:
+                print('** instance id missing **')
+                return
             if args[1] == '':
                 print('** instance id missing **')
-            with open("file.json", "r", encoding="utf-8") as f:
-                obj = json.load(f)
-                for i, v in obj.items():
-                    for x, y in v.items():
-                        if (x == 'id'):
-                            if args[1] == y:
-                                def __str__(self):
-                                    return ("[{}] ({}) {}".format
-                                            (type(self).__name__, self.id, self.__dict__))
-                            else:
-                                print("** no instance found **")
-                                
+                return
+            for i, v in storage.all().items():
+                if args[1] in i:
+                    print(v)
+
 
 
 if __name__ == '__main__':
