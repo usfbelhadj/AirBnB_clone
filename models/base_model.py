@@ -28,14 +28,17 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
+        """str"""
         return ("[{}] ({}) {}".format(type(self).__name__,
                 self.id, self.__dict__))
 
     def save(self):
+        """save"""
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
+        """to_dict"""
         my_dict = self.__dict__.copy()
         my_dict["__class__"] = type(self).__name__
         my_dict["created_at"] = my_dict["created_at"].isoformat()

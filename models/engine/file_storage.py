@@ -28,8 +28,10 @@ class FileStorage:
             json.dump(_dict, f)
 
     def reload(self):
+        """reload"""
         from models.base_model import BaseModel
-        if path.isfile(FileStorage.__file_path) and not stat(FileStorage.__file_path).st_size == 0:
+        if path.isfile(FileStorage.__file_path) and not stat(
+                FileStorage.__file_path).st_size == 0:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 obj = json.load(f)
                 _dict = {}
