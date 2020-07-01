@@ -97,6 +97,22 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(t)
+    
+    def do_update(self, arg):
+        """Update"""
+        args = arg.split(' ')
+        if self.check_class(args[0]):
+            if len(args) < 2:
+                print('** instance id missing **')
+                return
+            if args[1] == ' ':
+                print('** instance id missing **')
+                return
+            objects = storage.all()
+            key = "{}.{}".format(args[0], args[1])
+            v = objects[key]
+            v.__dict__[args[2]] = args[3]
+            v.save()
 
 
 if __name__ == '__main__':
