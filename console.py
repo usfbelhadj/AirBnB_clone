@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(t)
-    
+
     def do_update(self, arg):
         """Update"""
         args = arg.split(' ')
