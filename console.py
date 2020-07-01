@@ -7,6 +7,9 @@ import json
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
 from models import storage
 from datetime import datetime
 
@@ -39,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         if class_name == '':
             print('** class name missing **')
             return False
-        if class_name != 'BaseModel' and class_name != 'User' and class_name != 'State':
+        if class_name != 'BaseModel' and class_name != 'User' and class_name != 'State' and class_name != 'Review' and class_name != 'Amenity' and class_name != 'Place' and  class_name != 'City':
             print("** class doesn't exist **")
             return False
         return True
@@ -53,6 +56,14 @@ class HBNBCommand(cmd.Cmd):
                 new_model = User()
             if arg == 'State':
                 new_model = State()
+            if arg == 'Place':
+                new_model = Place()
+            if arg == 'City':
+                new_model = City()
+            if arg == 'Amenity':
+                new_model = Amenity()
+            if arg == 'Review':
+                new_model = Review()
             new_model.save()
             print(new_model.id)
 

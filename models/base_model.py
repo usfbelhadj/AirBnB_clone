@@ -8,7 +8,6 @@ from models import storage
 
 class BaseModel:
     """Class for Base Model"""
-
     def __init__(self, *args, **kwargs):
         """init"""
         self.id = str(uuid.uuid4())
