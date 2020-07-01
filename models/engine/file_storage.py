@@ -30,13 +30,17 @@ class FileStorage:
     def reload(self):
         """reload"""
         from models.base_model import BaseModel
+        from models.user import User
         if path.isfile(FileStorage.__file_path) and not stat(
                 FileStorage.__file_path).st_size == 0:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 obj = json.load(f)
                 _dict = {}
                 for key, val in obj.items():
-                    _dict[key] = BaseModel(**val)
+                    if "BaseModel" in key:
+                        _dict[key] = BaseModel(**val)
+                    if "User" in key:
+                        _dict[key] = User(**val)
                 FileStorage.__objects = _dict
         else:
             return
