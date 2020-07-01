@@ -30,7 +30,7 @@ class TestBaseModel(unittest.TestCase):
         instance = BaseModel()
         s = instance.__str__()
         _format = "[{}] ({}) {}".\
-            format(bm.__class__.__name__, bm.id, bm.__dict__)
+            format(instance.__class__.__name__, instance.id, instance.__dict__)
         self.assertEqual(s, _format)
 
     def test_kwargs(self):
