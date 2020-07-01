@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         if class_name == '':
             print('** class name missing **')
             return False
-        if class_name != 'BaseModel' and class_name != 'User' and class_name != 'State' and class_name != 'Review' and class_name != 'Amenity' and class_name != 'Place' and  class_name != 'City':
+        if class_name != 'BaseModel' and class_name != 'User' and class_name != 'State' and class_name != 'Review' and class_name != 'Amenity' and class_name != 'Place' and class_name != 'City':
             print("** class doesn't exist **")
             return False
         return True
@@ -131,6 +131,18 @@ class HBNBCommand(cmd.Cmd):
             v = objects[key]
             v.__dict__[args[2]] = args[3]
             v.save()
+
+    def do_count(self, arg):
+        """Counts"""
+        args = arg.split(' ')
+        if self.check_class(args[0]):
+            if args[0] not in storage.classes():
+                print("** class doesn't exist **")
+        else:
+            for k in storage.all():
+                print(k)
+                if k.startswith(args[0] + '.'):
+                    print(len(k))
 
 
 if __name__ == '__main__':
