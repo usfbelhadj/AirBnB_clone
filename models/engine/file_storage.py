@@ -31,6 +31,7 @@ class FileStorage:
         """reload"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
         if path.isfile(FileStorage.__file_path) and not stat(
                 FileStorage.__file_path).st_size == 0:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
@@ -41,6 +42,8 @@ class FileStorage:
                         _dict[key] = BaseModel(**val)
                     if "User" in key:
                         _dict[key] = User(**val)
+                    if "State" in key:
+                        _dict[key] = State(**val)
                 FileStorage.__objects = _dict
         else:
             return
