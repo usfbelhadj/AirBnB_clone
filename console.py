@@ -20,7 +20,14 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """default"""
-        pass
+        t = []
+        command = line.split('.')
+        for k, v in storage.all().items():
+            if command[0] == k.split('.')[0] and command[1] == 'all()':
+                t.append(str(v))
+            else:
+                return
+        print(t)
 
     def do_quit(self, line):
         """Exits the program"""
