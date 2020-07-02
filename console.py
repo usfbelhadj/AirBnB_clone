@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
         if arg == '':
             for k, v in storage.all().items():
                 t.append(str(v))
-        elif arg == 'BaseModel' or arg == 'User' or arg == 'State':
+        elif arg == 'BaseModel' or arg == 'User' or arg == 'State' or arg == 'Place' or arg == 'Amenity' or arg == 'City' or arg == 'Review':
             for k, v in storage.all().items():
                 if arg in k:
                     t.append(str(v))
