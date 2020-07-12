@@ -25,26 +25,66 @@ button:hover{
 div.locations, div.amenities {
     height: 100%;
     width: 25%;
-    box-sizing: border-box;
-    display: flex;  
-    flex-direction: column;
+    box-sizing: border-box; 
     position: relative;
     right: 25%;
-    justify-content: center;
     padding-left: 50px;
 }
 
-section.filters div:first-child {
+div.container section.filters div.locations {
     border-right: 1px #DDDDDD solid;
 }
 
-section.filters div h3 {
+section.filters div h3{
     font-weight: 600;
-    padding-top: 5px;
+    margin: 10px;
+    margin-left: 20%;
 }
 
-section.filters div h4 {
-    margin-top: -10px;
+section.filters div h4{
     font-weight: 400;
+    margin: 0px;
+    margin-left: 20%;
     font-size: 14px;
 }
+
+section.filters div ul.popover {
+    margin-top: 70px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    width: calc(100% + 2px);
+    background-color: #FAFAFA;
+    border: 1px #DDDDDD solid;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    display: none;
+    padding: 20px;
+    width: 240px;
+    margin-left: 10px;
+    padding-left: 50px;
+  }
+  
+section.filters div:hover ul.popover {
+    display: block;
+  }
+ul {
+    list-style: none;
+}
+  
+section.filters div ul.popover li {
+    padding-bottom: 5px;
+}
+  
+section.filters div ul.popover ul {
+    padding-bottom: 5px;
+}
+  
+section.filters div ul.popover h2 {
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+  

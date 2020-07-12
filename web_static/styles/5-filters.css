@@ -34,7 +34,7 @@ div.locations, div.amenities {
     padding-left: 50px;
 }
 
-section.filters div:first-child {
+div.container section.filters div.locations{
     border-right: 1px #DDDDDD solid;
 }
 
